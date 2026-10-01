@@ -57,6 +57,138 @@
                         <a href="mostrarcodigo/muestraEjercicio01.php" class="btn btn-codigo">Ver Código</a>
                     </td>
                 </tr>
+                
+                <tr>
+                    <td>2</td>
+                    <td>Ejercicio inicializar y mostrar una variable heredoc</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio02.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio02.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>3</td>
+                    <td>Ejercicio mostrar en tu página index la fecha y hora actual formateada en castellano</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio03.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio03.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>4</td>
+                    <td>Ejercicio mostrar en tu página index la fecha y hora actual en Oporto formateada en portugués</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio04.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio04.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>5</td>
+                    <td>Ejercicio inicializar y mostrar una variable que tiene una marca de tiempo (timestamp)</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio05.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio05.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>6</td>
+                    <td>Ejercicio Operar con fechas: calcular la fecha y el día de la semana de dentro de 60 días</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio06.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio06.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>7</td>
+                    <td>Ejercicio mostrar el nombre del fichero que se está ejecutando</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio07.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio07.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>8</td>
+                    <td>Ejercicio mostrar la dirección IP del equipo desde el que estás accediendo</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio08.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio08.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>9</td>
+                    <td>Ejercicio mostrar el path donde se encuentra el fichero que se está ejecutando</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio09.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio09.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>10</td>
+                    <td>Ejercicio mostrar el contenido del fichero que se está ejecutando</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio10.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio10.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>11</td>
+                    <td>Ejercicio mostrar el documento PHPDoc del proyecto que se está ejecutando generado con PHP Documentor o ApiGen</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio11.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio11.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>12</td>
+                    <td>Ejercicio mostrar el contenido de las variables superglobales (utilizando print_r() y foreach())</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio12.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio12.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>13</td>
+                    <td>Ejercicio crear una función que cuente el número de visitas a la página actual desde una fecha concreta</td>
+                    <td>
+                        <a href="codigoPHP/ejercicio13.php" class="btn btn-ejecutar"></a>
+                    </td>
+                    <td>
+                        <a href="mostrarcodigo/muestraEjercicio13.php" class="btn btn-codigo"></a>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
