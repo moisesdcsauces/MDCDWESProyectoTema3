@@ -34,7 +34,8 @@
         $bRespuesta = true; //b de boolean.
         $iEdad = 27; //i de Integer.
         $fSueldoHora = 15.50; //f de Float.
-        $sNombre = 'Moisés'; //s de String.
+        $sNombre = "Moisés Alberto Domínguez Cruz"; //s de String.
+        $vNull = null;
 
         echo "<a href='../indexProyectoTema3.php'>⬅ Volver al inicio</a>";
 
@@ -48,6 +49,8 @@
         echo "<p>La variable <span class='nombre'>".'$fSueldoHora'."</span> es de tipo <span class='tipo'>".gettype($fSueldoHora)."</span> y contiene el valor <span class='valor'>$fSueldoHora</span></p>";
 
         echo "<p>La variable <span class='nombre'>".'$sNombre'."</span> es de tipo <span class='tipo'>".gettype($sNombre)."</span> y contiene el valor <span class='valor'>$sNombre</span></p>";
+        
+        echo "<p>La variable <span class='nombre'>".'$vNull'."</span> es de tipo <span class='tipo'>".gettype($vNull)."</span> y contiene el valor <span class='valor'>$vNull</span></p>";
 
         echo "<hr>";
 
