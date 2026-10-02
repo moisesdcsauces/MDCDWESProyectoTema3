@@ -1,13 +1,10 @@
 /* ============================================
    PROYECTO TEMA 3 — DWES
-   (el body/container original no puede redefinir el
-   selector suelto "body": esta pagina ahora comparte esa
-   etiqueta con la cabecera y el pie del sitio, cargados
-   desde ../webroot/css/styles.css antes que esta hoja;
-   su fuente y color se movieron a .container, que es
-   donde realmente se veian. table/th/td/.btn no chocan
-   con nada del sitio y se dejan tal cual estaban)
    ============================================ */
+.titulo-header{
+    color: white;
+    text-align: center;
+}
 .container {
     max-width: 900px;
     margin: 0 auto;
