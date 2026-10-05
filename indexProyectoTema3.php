@@ -62,10 +62,10 @@
                     <td>2</td>
                     <td>Ejercicio inicializar y mostrar una variable heredoc</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio02.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio02.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -73,10 +73,10 @@
                     <td>3</td>
                     <td>Ejercicio mostrar en tu página index la fecha y hora actual formateada en castellano</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio03.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio03.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -84,10 +84,10 @@
                     <td>4</td>
                     <td>Ejercicio mostrar en tu página index la fecha y hora actual en Oporto formateada en portugués</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio04.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio04.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -182,6 +182,156 @@
                 <tr>
                     <td>13</td>
                     <td>Ejercicio crear una función que cuente el número de visitas a la página actual desde una fecha concreta</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Comprobar las librerías que estás utilizando en tu entorno de desarrollo y explotación</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Crear e inicializar un array con el sueldo percibido de lunes a domingo</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>Recorrer el array anterior utilizando funciones para obtener el mismo resultado</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Inicializar un array (bidimensional con dos índices numéricos)</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Recorrer el array anterior utilizando funciones para obtener el mismo resultado</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Construir una librería de funciones de validación de campos de formularios </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Convertir la LibreriaValidacionFormularios.php en una clase ValidacionFormularios.php</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>21/td>
+                    <td>Construir un formulario para recoger un cuestionario realizado a una persona y enviarlo a una página Tratamiento.php</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>Construir un formulario; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>25</td>
+                    <td>Trabajar en PlantillaFormulario.php mi plantilla para hacer formularios como churros</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>26</td>
+                    <td>Probar la plantilla anterior desarrollando un formulario que recoja la temperatura y la presión atmosférica en una serie de fechas</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>27</td>
+                    <td>Ejercicio extra para probar la plantilla del formulario que ha ganado el concurso</td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Ejercicio extra para probar la habilidad del alumno en en manejo de arrays multidimensionales</td>
                     <td>
                         
                     </td>
