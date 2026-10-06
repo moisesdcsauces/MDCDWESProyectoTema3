@@ -95,10 +95,10 @@
                     <td>5</td>
                     <td>Ejercicio inicializar y mostrar una variable que tiene una marca de tiempo (timestamp)</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio05.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio05.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -106,10 +106,10 @@
                     <td>6</td>
                     <td>Ejercicio Operar con fechas: calcular la fecha y el día de la semana de dentro de 60 días</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio06.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio06.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -117,10 +117,10 @@
                     <td>7</td>
                     <td>Ejercicio mostrar el nombre del fichero que se está ejecutando</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio07.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio07.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -128,10 +128,10 @@
                     <td>8</td>
                     <td>Ejercicio mostrar la dirección IP del equipo desde el que estás accediendo</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio08.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio08.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -139,10 +139,10 @@
                     <td>9</td>
                     <td>Ejercicio mostrar el path donde se encuentra el fichero que se está ejecutando</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio09.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio09.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -150,10 +150,10 @@
                     <td>10</td>
                     <td>Ejercicio mostrar el contenido del fichero que se está ejecutando</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio10.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio10.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -260,7 +260,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>21/td>
+                    <td>21</td>
                     <td>Construir un formulario para recoger un cuestionario realizado a una persona y enviarlo a una página Tratamiento.php</td>
                     <td>
                         
