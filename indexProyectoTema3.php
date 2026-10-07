@@ -223,20 +223,20 @@
                     <td>17</td>
                     <td>Inicializar un array (bidimensional con dos índices numéricos)</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio17.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio17.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>
                     <td>18</td>
                     <td>Recorrer el array anterior utilizando funciones para obtener el mismo resultado</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio18.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio18.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>
