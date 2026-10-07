@@ -172,10 +172,10 @@
                     <td>12</td>
                     <td>Ejercicio mostrar el contenido de las variables superglobales (utilizando print_r() y foreach())</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio12.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio12.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 
@@ -203,10 +203,10 @@
                     <td>15</td>
                     <td>Crear e inicializar un array con el sueldo percibido de lunes a domingo</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio15.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio15.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>

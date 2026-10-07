@@ -19,6 +19,8 @@
         Esta es una variable heredoc
         CadenaHeredoc;
         print $a;
+        
+        // añadir sentencia sql para ver la diferencia
     ?>
 </body>
 </html>

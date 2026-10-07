@@ -37,7 +37,7 @@
         echo "La marca de tiempo actual es ".$dFechaActual->getTimestamp();
         echo '</br>';
         //Inicializar la variable $oFechaCumpleanos
-        $dFechaCumpleanos = new DateTime('1999-10-21');
+        $dFechaCumpleanos = new DateTime('1999-06-09');
         //Mostrar la fecha de cumpleaños con /
         echo '</br>';
         echo "La fecha de nacimiento es ".$dFechaCumpleanos->format("d/m/Y");
@@ -51,6 +51,8 @@
         //Mostrar el dia de la semana de nacimiento
         echo "El dia de la semana de nacimiento es ".$dFechaCumpleanos->format("l");
         echo '</br>';
+        
+        // Ponerlo con los colores del 2
     ?>
 </body>
 </html>
