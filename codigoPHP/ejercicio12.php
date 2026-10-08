@@ -22,10 +22,11 @@
         echo "<h2>Recorrido con un foreach()</h2><br>";
         
         foreach ($_SERVER as $key => $value) {
-            echo "<li>la variable $key contiene $value </li>";
+            echo "<li>$key contiene $value </li>";
         }
         echo "</ul>";
         
+        // Mostrar todas las variables superglobales. Pendiente de mejora.
         ?>
     </body>
 </html>
