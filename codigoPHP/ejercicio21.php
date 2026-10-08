@@ -19,6 +19,8 @@
              Edad:<input type="number" name="edad"/><br>
              <input type="submit" value="Enviar" />
          </form>
+        
+        // Cambiar edad por fecha de nacimiento
     </body>
 </html>
 
