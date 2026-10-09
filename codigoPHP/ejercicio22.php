@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ejercicio 21 - Formulario</title>
+        <title>Ejercicio 22 - Formulario</title>
         <style>
             .enlace-volver{
                 position: absolute;
@@ -59,11 +59,6 @@
             input:disabled{
                 background-color: #e0e0e0;
             }
-            
-            #nombre,#fechaNacimiento,#sueldo{
-                background-color: #fff9c4;
-                border:1px solid black;
-            }
         </style>
     </head>
     <body>
@@ -80,20 +75,7 @@
             <h2>Formulario de datos</h2>
         </header>
         <form name="formularioDatos" action="Tratamiento.php" method="post">
-
-            <label for="nombre" >Nombre:</label>
-            <input type="text" name="nombre" id="nombre"/>
-            <br/>
-
-            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-            <input type="date" name="fechaNacimiento" id="fechaNacimiento"/>
-            <br/>
-
-            <label for="sueldo">Sueldo:</label>
-            <input type="number" name="sueldo" id="sueldo" step="any"/>
-            <br/>
-
-            <input type="submit" name="submit" id="submit" value="Enviar"/>
+           
         </form>
     </body>
 </html>

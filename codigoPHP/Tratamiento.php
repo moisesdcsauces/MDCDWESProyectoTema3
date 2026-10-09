@@ -15,16 +15,17 @@
          */
         echo "<a href='ejercicio21.php'>⬅ Volver al formulario</a><br>";
 
+        $oFechaNacimientoDateTime = new DateTime($_REQUEST["fechaNacimiento"]);
+        
         // Recoge los valores de los campos por el metodo post del formulario
         $sNombre = $_REQUEST['nombre'];
-        $dFecha = $_REQUEST['fechaNacimiento'];
         $iSueldo = $_REQUEST['sueldo'];
 
         printf("Nombre: " . $sNombre . "\n"); //Muestra por pantalla el texto seguido del valor y un salto de linea
 
         echo "<br>";
 
-        printf("Fecha nacimiento: " . $dFecha . "\n"); //Muestra por pantalla el texto seguido del valor y un salto de linea
+        printf("Fecha nacimiento: " . $oFechaNacimientoDateTime->format("d/m/Y") . "\n"); //Muestra por pantalla el texto seguido del valor y un salto de linea
 
         echo "<br>";
 
