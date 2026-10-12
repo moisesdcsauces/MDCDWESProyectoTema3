@@ -283,10 +283,10 @@
                     <td>23</td>
                     <td>Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio23.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio23.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>
