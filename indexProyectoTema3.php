@@ -273,10 +273,10 @@
                     <td>22</td>
                     <td>Construir un formulario para recoger un cuestionario realizado a una persona y mostrar en la misma página las preguntas y las respuestas recogidas</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio22.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio22.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>
