@@ -82,7 +82,7 @@
             }
 
             /* Fondo amarillo para campos obligatorios */
-            input:required {
+            input {
                 background-color: #fff9c4;
             }
         </style>
@@ -97,71 +97,73 @@
         <?php
         echo "<a href='../indexProyectoTema3.php' class='enlace-volver'>⬅ Volver al inicio</a><br>";
 
-        // Si nombre y el apellido no están vacíos entra en el if.
-        if (!empty($_POST['nombre']) && !empty($_POST['apellidos'])) {
-            echo "<div class='resultados'>";
-            echo "<h2>Resultados del Cuestionario</h2>";
+        // Importacion de la libreria
+        require_once '../core/231018libreriaValidacion.php';
 
-            // Variables y el valor asignado que recoge.
-            $sNombre = $_REQUEST['nombre'];
-            $sApellidos = $_REQUEST['apellidos'];
+        // Inicializacion de variables
+        $entradaOK = true; // Variable que nos indica que todo va bien.
+        $aErrores = ['nombre' => '',
+            'apellidos' => '']; // Array donde recogemos los mensajes de error.
+        $aRespuestas = ['nombre' => '',
+            'apellidos' => '']; // Array donde recogeremos la respuestas correctas (si $entradaOK).
+        // Para cada campo del formulario: Validar entrada y actuar en consecuencia
+        if (isset($_POST['enviar'])) {
 
-            // Muestro el contenido de la variable nombre con print_r (usando la variable correcta $sNombre)
-            print_r('El nombre es: ' . $sNombre);
-            echo '<br>';
-            // Muestro el contenido de la variable apellidos con print_r (usando la variable correcta $sApellidos)
-            print_r('Los apellidos son: ' . $sApellidos);
-            echo '<br>';
-            echo '<br>';
+            // Validacion 
+            $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST['nombre'], 100, 1, 1);
+            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_REQUEST['apellidos'], 150, 1, 1);
 
-            // Contenido con print_r de las variables $_REQUEST
-            echo '<p>El contenido de $_REQUEST es:</p>';
-            echo '<pre>';
-            print_r($_REQUEST);
-            echo '</pre>';
-
-            // Contenido con print_r de las variables $_GET
-            echo '<p>El contenido de $_GET es:</p>';
-            echo '<pre>';
-            print_r($_GET);
-            echo '</pre>';
-
-            // Contenido con print_r de las variables $_POST
-            echo '<p>El contenido de $_POST es:</p>';
-            echo '<pre>';
-            print_r($_POST);
-            echo '</pre>';
-
-            echo "<br><a href='" . $_SERVER['PHP_SELF'] . "'>⬅ Rellenar otro formulario</a>";
-            echo "</div>";
+            foreach ($aErrores as $campo => $valor) {
+                if ($valor != null) {
+                    $entradaOk = false;
+                }
+            }
         } else {
-            // Los datos se guardan en el mismo archivo y se muestran en la misma página.
-            // Se pide el nombre y apellidos que son de tipo text.
-            ?>    
-            <form name="input" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-                <header>
-                    <h2>Formulario de datos</h2>
-                </header>
-                <?php
-                // Mantenemos lo que el usuario escribió por si falla el otro campo (value)
-                $valorNombre = isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : '';
-                echo 'Nombre: <input type="text" name="nombre" value="' . $valorNombre . '"/>';
-                if (isset($_POST['enviar']) && empty($_POST['nombre'])) {
-                    echo "<span style='color:red; display:block; font-size:13px;'>¡Falta introducir el nombre!</span>";
-                }
-                echo '<br>';
-                ?>
-                <?php
-                $valorApellidos = isset($_POST['apellidos']) ? htmlspecialchars($_POST['apellidos']) : '';
-                echo 'Apellidos: <input type="text" name="apellidos" value="' . $valorApellidos . '"/>';
-                if (isset($_POST['enviar']) && empty($_POST['apellidos'])) {
-                    echo "<span style='color:red; display:block; font-size:13px;'>¡Falta introducir los apellidos!</span>";
-                }
-                ?>
-                <p><input type="submit" value="Enviar" name="enviar"/></p>
-            </form>
-            <?php
+            $entradaOK = false;
         }
+
+        if ($entradaOK) {
+            // cargar la variable $aRespuestas y tratamiento de datos OK
+            $aRespuestas['nombre'] = $_REQUEST['nombre'];
+            $aRespuestas['apellidos'] = $_REQUEST['apellidos'];
+
+            echo "<h2>Datos del formulario</h2>";
+            
+            foreach ($aRespuestas as $campo => $valor) {
+                echo "<p>$campo: <b>$valor</b></p>";
+            }
+            
+            // Rellenar otro formulario
+            echo "<br><a href='" . $_SERVER['PHP_SELF'] . "'>⬅ Rellenar otro formulario</a>";
+        } else {
+            ?>    
+
+            <!-- Mostrar formulario -->
+            <form name="input" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+
+                <!-- Mostrar los datos tecleados correctamente en intentos anteriores (en los value) -->
+                Nombre: <input type="text" name="nombre" value=""/>
+                <?php
+                // Mostrar mensajes de error (si los hay y el formulario no se muestra por primera vez)
+                if ($aErrores['nombre'] != '') {
+                    echo "<span style='color:red; display:block; font-size:13px;'>" . $aErrores['nombre'] . "</span>";
+                }
+                ?>
+                <br>
+
+                Apellidos: <input type="text" name="apellidos" value=""/>
+                <?php
+                if ($aErrores['apellidos'] != '') {
+                    echo "<span style='color:red; display:block; font-size:13px;'>" . $aErrores['apellidos'] . "</span>";
+                }
+                ?>
+                <br>
+
+                <p><input type="submit" name="enviar" value="Enviar"/></p>
+            </form>
+
+            <?php
+        } // Fin si ($entradaOK)
         ?>
     </body>
 </html>
