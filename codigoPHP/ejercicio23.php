@@ -110,11 +110,11 @@
         if (isset($_POST['enviar'])) {
 
             // Validacion 
-            $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST['nombre'], 100, 1, 1);
-            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_REQUEST['apellidos'], 150, 1, 1);
+            $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_POST['nombre'], 100, 1, 1);
+            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'], 150, 1, 1);
 
-            foreach ($aErrores as $campo => $valor) {
-                if ($valor != null) {
+            foreach ($aErrores as $valor) {
+                if (!empty($valor)) {
                     $entradaOk = false;
                 }
             }
