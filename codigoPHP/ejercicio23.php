@@ -110,12 +110,12 @@
         if (isset($_POST['enviar'])) {
 
             // Validacion 
-            $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_POST['nombre'], 100, 1, 1);
-            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_POST['apellidos'], 150, 1, 1);
+            $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_POST["nombre"], 100, 1, 1);
+            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_POST["apellidos"], 150, 1, 1);
 
             foreach ($aErrores as $valor) {
                 if (!empty($valor)) {
-                    $entradaOk = false;
+                    $entradaOK = false;
                 }
             }
         } else {
@@ -124,8 +124,8 @@
 
         if ($entradaOK) {
             // cargar la variable $aRespuestas y tratamiento de datos OK
-            $aRespuestas['nombre'] = $_REQUEST['nombre'];
-            $aRespuestas['apellidos'] = $_REQUEST['apellidos'];
+            $aRespuestas['nombre'] = $_POST["nombre"];
+            $aRespuestas['apellidos'] = $_POST["apellidos"];
 
             echo "<h2>Datos del formulario</h2>";
             
