@@ -293,10 +293,10 @@
                     <td>24</td>
                     <td>Construir un formulario; en el caso de que alguna respuesta esté vacía o errónea volverá a salir el formulario con el mensaje correspondiente, pero las respuestas que habíamos tecleado correctamente aparecerán en el formulario y no tendremos que volver a teclearlas</td>
                     <td>
-                        
+                        <a href="codigoPHP/ejercicio24.php" class="btn btn-ejecutar">Ejecutar</a>
                     </td>
                     <td>
-                        
+                        <a href="mostrarcodigo/muestraEjercicio24.php" class="btn btn-codigo">Código</a>
                     </td>
                 </tr>
                 <tr>
