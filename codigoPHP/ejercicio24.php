@@ -120,13 +120,13 @@
         $entradaOK = true; // Variable que nos indica que todo va bien.
         $aErrores = [
             'nombre' => '',
-            'apellidos' => '',
+            'sueldo' => '',
             'fechaNacimiento' => ''
         ]; // Array donde recogemos los mensajes de error.
 
         $aRespuestas = [
             'nombre' => '',
-            'apellidos' => '',
+            'sueldo' => '',
             'fechaNacimiento' => ''
         ]; // Array donde recogeremos las respuestas correctas (si $entradaOK).
 
@@ -135,7 +135,7 @@
             
             // Validación con la librería usando formato YYYY-MM-DD
             $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST["nombre"], 100, 1, 1);
-            $aErrores['apellidos'] = validacionFormularios::comprobarAlfabetico($_REQUEST["apellidos"], 150, 1, 1);
+            $aErrores['sueldo'] = validacionFormularios::comprobarFloat($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
             $aErrores['fechaNacimiento'] = validacionFormularios::validarFecha($_REQUEST["fechaNacimiento"], date("Y-m-d"), "1900-01-01", 1);
 
             foreach ($aErrores as $valor) {
@@ -150,7 +150,8 @@
         if ($entradaOK) {
             // Cargar la variable $aRespuestas y tratamiento de datos OK
             $aRespuestas['nombre'] = $_REQUEST["nombre"];
-            $aRespuestas['apellidos'] = $_REQUEST["apellidos"];
+            $fSueldo = floatval($_REQUEST["sueldo"]);
+            $aRespuestas['sueldo'] = number_format($fSueldo, 2, ',', '.') . " €";
 
             // Convertimos la fecha a string formateado (d/m/Y)
             $oFecha = new DateTime($_REQUEST["fechaNacimiento"]);
@@ -184,12 +185,12 @@
                 }
                 ?>
 
-                <!-- Campo Apellidos -->
-                <label for="apellidos">Apellidos:</label>
-                <input type="text" id="apellidos" name="apellidos" value="<?php echo !empty($_REQUEST['apellidos']) ? htmlspecialchars($_REQUEST['apellidos']) : ''; ?>" required/>
+                <!-- Campo Sueldo -->
+                <label for="sueldo">Sueldo:</label>
+                <input type="number" step="any" id="sueldo" name="sueldo" value="<?php echo !empty($_REQUEST['sueldo']) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" required/>
                 <?php
-                if (!empty($aErrores['apellidos'])) {
-                    echo "<span class='error'>" . $aErrores['apellidos'] . "</span>";
+                if (!empty($aErrores['sueldo'])) {
+                    echo "<span class='error'>" . $aErrores['sueldo'] . "</span>";
                 }
                 ?>
 
