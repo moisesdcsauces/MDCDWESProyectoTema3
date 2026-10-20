@@ -44,7 +44,6 @@
                 min-width: 320px;
             }
 
-            /* Estilo para cuando se muestran los resultados */
             .resultados {
                 display: inline-block;
                 text-align: left;
@@ -54,13 +53,6 @@
                 box-shadow: 0 4px 10px rgba(0,0,0,0.05);
                 max-width: 600px;
                 width: 100%;
-            }
-
-            pre {
-                background: #f0f0f0;
-                padding: 10px;
-                border-radius: 5px;
-                text-align: left;
             }
 
             input[type="text"],
@@ -89,7 +81,6 @@
                 background-color: #5c6096;
             }
 
-            /* Fondo amarillo para campos obligatorios */
             input:required {
                 background-color: #fff9c4;
             }
@@ -113,31 +104,35 @@
         <?php
         echo "<a href='../indexProyectoTema3.php' class='enlace-volver'>⬅ Volver al inicio</a><br>";
 
-        // Importacion de la libreria
+        // Importación de la librería de validación
         require_once '../core/231018libreriaValidacion.php';
 
-        // Inicializacion de variables
-        $entradaOK = true; // Variable que nos indica que todo va bien.
+        // Inicialización de variables
+        $entradaOK = true;
         $aErrores = [
             'nombre' => '',
             'sueldo' => '',
             'fechaNacimiento' => ''
-        ]; // Array donde recogemos los mensajes de error.
+        ];
 
         $aRespuestas = [
             'nombre' => '',
             'sueldo' => '',
             'fechaNacimiento' => ''
-        ]; // Array donde recogeremos las respuestas correctas (si $entradaOK).
+        ];
 
-        // Para cada campo del formulario: Validar entrada y actuar en consecuencia
         if (isset($_REQUEST['enviar'])) {
             
-            // Validación con la librería usando formato YYYY-MM-DD
+            // Validacion del Nombre
             $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST["nombre"], 100, 1, 1);
-            $aErrores['sueldo'] = validacionFormularios::comprobarFloat($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
+            
+            // Validacion del sueldo
+            $aErrores['sueldo'] = validacionFormularios::comprobarFloatMonetarioES($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
+
+            // Validacion de la Fecha de Nacimiento
             $aErrores['fechaNacimiento'] = validacionFormularios::validarFecha($_REQUEST["fechaNacimiento"], date("Y-m-d"), "1900-01-01", 1);
 
+            // Comprobacion global de errores
             foreach ($aErrores as $valor) {
                 if (!empty($valor)) {
                     $entradaOK = false;
@@ -148,23 +143,20 @@
         }
 
         if ($entradaOK) {
-            // Cargar la variable $aRespuestas y tratamiento de datos OK
+            // Recogida de datos brutos en $aRespuestas
             $aRespuestas['nombre'] = $_REQUEST["nombre"];
-            $fSueldo = floatval($_REQUEST["sueldo"]);
-            $aRespuestas['sueldo'] = number_format($fSueldo, 2, ',', '.') . " €";
-
-            // Convertimos la fecha a string formateado (d/m/Y)
-            $oFecha = new DateTime($_REQUEST["fechaNacimiento"]); //Cambiar esto.
-            $aRespuestas['fechaNacimiento'] = $oFecha->format('d/m/Y'); // y formatear en la salida.
+            $aRespuestas['sueldo'] = $_REQUEST["sueldo"];
+            $aRespuestas['fechaNacimiento'] = $_REQUEST["fechaNacimiento"];
 
             echo "<div class='resultados'>";
             echo "<h2>Datos del formulario</h2>";
             
-            foreach ($aRespuestas as $campo => $valor) {
-                echo "<p>" . ucfirst($campo) . ": <b>" . htmlspecialchars($valor) . "</b></p>";
-            }
+            echo "<p>Nombre: <b>" . htmlspecialchars($aRespuestas['nombre']) . "</b></p>";
+            // Formateo directo del sueldo a float con punto y luego a formato monetario español (internamente php necesita reconocer el punto para que entienda que es un float)
+            echo "<p>Sueldo: <b>" . htmlspecialchars(number_format(floatval(str_replace(',', '.', $aRespuestas['sueldo'])), 2, ',', '.') . " €") . "</b></p>";
+            // Formateo directo de la fecha a d/m/Y
+            echo "<p>Fecha de Nacimiento: <b>" . htmlspecialchars((new DateTime($aRespuestas['fechaNacimiento']))->format('d/m/Y')) . "</b></p>";
             
-            // Rellenar otro formulario
             echo "<br><a href='" . $_SERVER['PHP_SELF'] . "'>⬅ Rellenar otro formulario</a>";
             echo "</div>";
         } else {
@@ -178,7 +170,7 @@
 
                 <!-- Campo Nombre -->
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo !empty($_REQUEST['nombre']) ? htmlspecialchars($_REQUEST['nombre']) : ''; ?>" required/>
+                <input type="text" id="nombre" name="nombre" value="<?php echo (!empty($_REQUEST['nombre']) && empty($aErrores['nombre'])) ? htmlspecialchars($_REQUEST['nombre']) : ''; ?>" required/>
                 <?php
                 if (!empty($aErrores['nombre'])) {
                     echo "<span class='error'>" . $aErrores['nombre'] . "</span>";
@@ -187,7 +179,7 @@
 
                 <!-- Campo Sueldo -->
                 <label for="sueldo">Sueldo:</label>
-                <input type="number" step="any" id="sueldo" name="sueldo" value="<?php echo !empty($_REQUEST['sueldo']) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" required/>
+                <input type="text" id="sueldo" name="sueldo" value="<?php echo (!empty($_REQUEST['sueldo']) && empty($aErrores['sueldo'])) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" required/>
                 <?php
                 if (!empty($aErrores['sueldo'])) {
                     echo "<span class='error'>" . $aErrores['sueldo'] . "</span>";
@@ -196,7 +188,7 @@
 
                 <!-- Campo Fecha de Nacimiento -->
                 <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo !empty($_REQUEST['fechaNacimiento']) ? htmlspecialchars($_REQUEST['fechaNacimiento']) : ''; ?>" required/>
+                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo (!empty($_REQUEST['fechaNacimiento']) && empty($aErrores['fechaNacimiento'])) ? htmlspecialchars($_REQUEST['fechaNacimiento']) : ''; ?>" required/>
                 <?php
                 if (!empty($aErrores['fechaNacimiento'])) {
                     echo "<span class='error'>" . $aErrores['fechaNacimiento'] . "</span>";
@@ -207,7 +199,7 @@
             </form>
 
             <?php
-        } // Fin si ($entradaOK)
+        }
         ?>
     </body>
 </html>
