@@ -154,8 +154,8 @@
             $aRespuestas['sueldo'] = number_format($fSueldo, 2, ',', '.') . " €";
 
             // Convertimos la fecha a string formateado (d/m/Y)
-            $oFecha = new DateTime($_REQUEST["fechaNacimiento"]);
-            $aRespuestas['fechaNacimiento'] = $oFecha->format('d/m/Y');
+            $oFecha = new DateTime($_REQUEST["fechaNacimiento"]); //Cambiar esto.
+            $aRespuestas['fechaNacimiento'] = $oFecha->format('d/m/Y'); // y formatear en la salida.
 
             echo "<div class='resultados'>";
             echo "<h2>Datos del formulario</h2>";
