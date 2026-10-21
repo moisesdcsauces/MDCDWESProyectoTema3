@@ -123,44 +123,40 @@
 
         if (isset($_REQUEST['enviar'])) {
             
-            // Validacion del Nombre
+            // Valida el campo nombre: alfabetico, máx 100 caracteres, mín 1, obligatorio (1)
             $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST["nombre"], 100, 1, 1);
             
-            // Validacion del Sueldo con mensaje personalizado para el punto
-            if (strpos($_REQUEST["sueldo"], '.') !== false) {
-                $aErrores['sueldo'] = "El sueldo no puede contener puntos (.). Debe utilizar la coma (,) para separar los decimales.";
-            } else {
-                $aErrores['sueldo'] = validacionFormularios::comprobarFloatMonetarioES($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
-            }
+            // Valida el sueldo con el método específico que exige coma decimal y rango entre 0 y el flotante máximo
+            $aErrores['sueldo'] = validacionFormularios::comprobarFloatMonetarioES($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
 
-            // Validacion de la Fecha de Nacimiento
+            // Valida la fecha de nacimiento entre el año 1900 y la fecha actual (date("Y-m-d"))
             $aErrores['fechaNacimiento'] = validacionFormularios::validarFecha($_REQUEST["fechaNacimiento"], date("Y-m-d"), "1900-01-01", 1);
 
             // Comprobación global de errores
             foreach ($aErrores as $valor) {
                 if (!empty($valor)) {
-                    $entradaOK = false;
+                    $entradaOK = false; // Cambiamos el estado a falso para recargar el formulario
                 }
             }
         } else {
-            $entradaOK = false;
+            $entradaOK = false; // Si el formulario no se ha enviado (primera carga), la entrada no es correcta
         }
 
         if ($entradaOK) {
             // Recogida de datos en $aRespuestas
             $aRespuestas['nombre'] = $_REQUEST["nombre"];
+            // Guardamos el sueldo tal como se introdujo (con coma)
             $aRespuestas['sueldo'] = $_REQUEST["sueldo"];
+            // Instanciamos el objeto DateTime a partir del valor recibido en el input tipo date
             $aRespuestas['fechaNacimiento'] = new DateTime($_REQUEST["fechaNacimiento"]);
 
             echo "<div class='resultados'>";
             echo "<h2>Datos del formulario</h2>";
             
             echo "<p>Nombre: <b>" . htmlspecialchars($aRespuestas['nombre']) . "</b></p>";
-            
-            // Formateo directo del sueldo
+            // Formatea el número a formato monetario español (2 decimales, coma decimal, punto de miles) y añade el símbolo €
             echo "<p>Sueldo: <b>" . htmlspecialchars(number_format(floatval(str_replace(',', '.', $aRespuestas['sueldo'])), 2, ',', '.') . " €") . "</b></p>";
-            
-            // Formateo directo llamando al metodo format del objeto DateTime
+            // Aplica el metodo ->format('d/m/Y') sobre el objeto DateTime previamente almacenado en $aRespuestas
             echo "<p>Fecha de Nacimiento: <b>" . htmlspecialchars($aRespuestas['fechaNacimiento']->format('d/m/Y')) . "</b></p>";
             
             echo "<br><a href='" . $_SERVER['PHP_SELF'] . "'>⬅ Rellenar otro formulario</a>";
@@ -168,8 +164,7 @@
         } else {
             ?>    
 
-            <!-- Mostrar formulario -->
-            <form name="input" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" novalidate>
+            <form name="input" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <header>
                     <h2>Formulario de datos</h2>
                 </header>
@@ -183,9 +178,15 @@
                 }
                 ?>
 
-                <!-- Campo Sueldo -->
+                <!-- Campo Sueldo con validación cliente HTML (pattern + title) -->
                 <label for="sueldo">Sueldo:</label>
-                <input type="text" id="sueldo" name="sueldo" value="<?php echo (!empty($_REQUEST['sueldo']) && empty($aErrores['sueldo'])) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" required/>
+                <input type="text" 
+                       id="sueldo" 
+                       name="sueldo" 
+                       value="<?php echo (!empty($_REQUEST['sueldo']) && empty($aErrores['sueldo'])) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" 
+                       pattern="^[0-9]+(,[0-9]+)?$" 
+                       title="No introduzca puntos (.). Debe utilizar la coma (,) para los decimales (ejemplo: 1200,50)." 
+                       required/>
                 <?php
                 if (!empty($aErrores['sueldo'])) {
                     echo "<span class='error'>" . $aErrores['sueldo'] . "</span>";
