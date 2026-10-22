@@ -565,7 +565,7 @@ class validacionFormularios {  //ELIMINA EL METODO VALIDATEDATE Y LO INCLUYE EN 
         if (($obligatorio == 0 && $float !== null && $float !== '') || ($obligatorio == 1 && empty($mensajeError))) {
 
             if (!preg_match('/^-?[0-9]+(,[0-9]+)?$/', $float)) {
-                $mensajeError = "Formato decimal incorrecto";
+                $mensajeError = "Formato decimal incorrecto. Introduce una coma(,) para que sea valido";
             } else {
                 //se convierte a float con punto para la base de datos
                 $floatConvertido = str_replace(',', '.', $float);
