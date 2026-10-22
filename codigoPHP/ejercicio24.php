@@ -81,7 +81,7 @@
                 background-color: #5c6096;
             }
 
-            input:required {
+            #nombre, #sueldo, #fechaNacimiento {
                 background-color: #fff9c4;
             }
 
@@ -122,10 +122,10 @@
         ];
 
         if (isset($_REQUEST['enviar'])) {
-            
+
             // Valida el campo nombre: alfabetico, máx 100 caracteres, mín 1, obligatorio (1)
             $aErrores['nombre'] = validacionFormularios::comprobarAlfabetico($_REQUEST["nombre"], 100, 1, 1);
-            
+
             // Valida el sueldo con el método específico que exige coma decimal y rango entre 0 y el flotante máximo
             $aErrores['sueldo'] = validacionFormularios::comprobarFloatMonetarioES($_REQUEST["sueldo"], PHP_FLOAT_MAX, 0, 1);
 
@@ -146,61 +146,52 @@
             // Recogida de datos en $aRespuestas
             $aRespuestas['nombre'] = $_REQUEST["nombre"];
             // Guardamos el sueldo tal como se introdujo (con coma)
-            $aRespuestas['sueldo'] = $_REQUEST["sueldo"];
+            $aRespuestas['sueldo'] = floatval(str_replace(',', '.', $_REQUEST["sueldo"]));
             // Instanciamos el objeto DateTime a partir del valor recibido en el input tipo date
             $aRespuestas['fechaNacimiento'] = new DateTime($_REQUEST["fechaNacimiento"]);
 
             echo "<div class='resultados'>";
             echo "<h2>Datos del formulario</h2>";
-            
-            echo "<p>Nombre: <b>" . htmlspecialchars($aRespuestas['nombre']) . "</b></p>";
+
+            echo "<p>Nombre: <b>" . $aRespuestas['nombre'] . "</b></p>";
             // Formatea el número a formato monetario español (2 decimales, coma decimal, punto de miles) y añade el símbolo €
-            echo "<p>Sueldo: <b>" . htmlspecialchars(number_format(floatval(str_replace(',', '.', $aRespuestas['sueldo'])), 2, ',', '.') . " €") . "</b></p>";
+            echo "<p>Sueldo: <b>" . number_format($aRespuestas["sueldo"], 2, ',', '.') . "</b></p>";
             // Aplica el metodo ->format('d/m/Y') sobre el objeto DateTime previamente almacenado en $aRespuestas
-            echo "<p>Fecha de Nacimiento: <b>" . htmlspecialchars($aRespuestas['fechaNacimiento']->format('d/m/Y')) . "</b></p>";
-            
+            echo "<p>Fecha de Nacimiento: <b>" . $aRespuestas['fechaNacimiento']->format('d/m/Y') . "</b></p>";
+
             echo "<br><a href='" . $_SERVER['PHP_SELF'] . "'>⬅ Rellenar otro formulario</a>";
             echo "</div>";
         } else {
             ?>    
 
-            <form name="input" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form name="formulario" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" novalidate>
                 <header>
                     <h2>Formulario de datos</h2>
                 </header>
 
                 <!-- Campo Nombre -->
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<?php echo (!empty($_REQUEST['nombre']) && empty($aErrores['nombre'])) ? htmlspecialchars($_REQUEST['nombre']) : ''; ?>" required/>
-                <?php
-                if (!empty($aErrores['nombre'])) {
-                    echo "<span class='error'>" . $aErrores['nombre'] . "</span>";
-                }
-                ?>
+                <label for="nombre" >Nombre:</label>
 
-                <!-- Campo Sueldo con validación cliente HTML (pattern + title) -->
-                <label for="sueldo">Sueldo:</label>
-                <input type="text" 
-                       id="sueldo" 
-                       name="sueldo" 
-                       value="<?php echo (!empty($_REQUEST['sueldo']) && empty($aErrores['sueldo'])) ? htmlspecialchars($_REQUEST['sueldo']) : ''; ?>" 
-                       pattern="^[0-9]+(,[0-9]+)?$" 
-                       title="No introduzca puntos (.). Debe utilizar la coma (,) para los decimales (ejemplo: 1200,50)." 
-                       required/>
-                <?php
-                if (!empty($aErrores['sueldo'])) {
-                    echo "<span class='error'>" . $aErrores['sueldo'] . "</span>";
-                }
-                ?>
+                <input type="text" name="nombre" id="nombre" value="<?php echo!empty($_REQUEST["nombre"]) ? htmlspecialchars($_REQUEST["nombre"]) : '' ?>"/>
 
-                <!-- Campo Fecha de Nacimiento -->
+                <?php echo!empty($aErrores["nombre"]) ? "<span style='color:red;'>" . $aErrores['nombre'] . "</span>" : '' ?>
+
+                <br/>
+                <!-- Campo Sueldo -->
                 <label for="fechaNacimiento">Fecha de Nacimiento:</label>
-                <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="<?php echo (!empty($_REQUEST['fechaNacimiento']) && empty($aErrores['fechaNacimiento'])) ? htmlspecialchars($_REQUEST['fechaNacimiento']) : ''; ?>" required/>
-                <?php
-                if (!empty($aErrores['fechaNacimiento'])) {
-                    echo "<span class='error'>" . $aErrores['fechaNacimiento'] . "</span>";
-                }
-                ?>
+
+                <input type="date" name="fechaNacimiento" id="fechaNacimiento" value="<?php echo!empty($_REQUEST["fechaNacimiento"]) && empty($aErrores["fechaNacimiento"]) ? htmlspecialchars($_REQUEST["fechaNacimiento"]) : '' ?>"/>
+
+                <?php echo!empty($aErrores["fechaNacimiento"]) ? "<span style='color:red;'>" . $aErrores['fechaNacimiento'] . "</span>" : '' ?>
+                <br/>
+                <!-- Campo Fecha de Nacimiento -->
+                <label for="sueldo" >Sueldo:</label>
+
+                <input type="text" name="sueldo" id="sueldo" title="Usar comas para separar decimales" value="<?php echo!empty($_REQUEST["sueldo"]) ? htmlspecialchars($_REQUEST["sueldo"]) : '' ?>"/>
+
+                <?php echo!empty($aErrores["sueldo"]) ? "<span style='color:red;'>" . $aErrores['sueldo'] . "</span>" : '' ?>
+
+                <br/>
 
                 <p><input type="submit" name="enviar" value="Enviar"/></p>
             </form>
