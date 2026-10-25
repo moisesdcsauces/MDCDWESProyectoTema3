@@ -62,7 +62,7 @@
             input[type="text"],
             input[type="date"],
             select {
-                margin-bottom: 5px;
+                margin-bottom: 0px;
                 padding: 8px;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -78,7 +78,7 @@
             }
 
             input[type="submit"] {
-                margin-top: 20px;
+                margin-top: 15px;
                 font-weight: bold;
                 padding: 10px;
                 width: 100%;
@@ -113,6 +113,7 @@
                 color: red;
                 display: block;
                 font-size: 13px;
+                min-height: 16px;
                 margin-top: 3px;
                 margin-bottom: 5px;
             }
@@ -143,7 +144,6 @@
         ];
 
         $aRespuestas = [
-            'codigo' => 'IES-SAUCES-67',
             'nombre' => '',
             'sueldo' => '',
             'fechaNacimiento' => '',
@@ -213,7 +213,7 @@
             echo "<div class='resultados'>";
             echo "<h2>Datos del formulario</h2>";
 
-            echo "<p>Código de empleado: <b>" . $aRespuestas['codigo'] . "</b></p>";
+            echo "<p>Fecha y Hora de registro: <b>" . date('d/m/Y H:i:s') . "</b></p>";
             echo "<p>Nombre: <b>" . $aRespuestas['nombre'] . "</b></p>";
             echo "<p>Sueldo: <b>" . number_format($aRespuestas["sueldo"], 2, ',', '.') . " €</b></p>";
             echo "<p>Fecha de Nacimiento: <b>" . $aRespuestas['fechaNacimiento']->format('d/m/Y') . "</b></p>";
@@ -232,31 +232,32 @@
                     <h2>Formulario de datos</h2>
                 </header>
 
-                <!-- Campo Bloqueado -->
-                <label for="codigo">Código de Empleado (Bloqueado):</label>
-                <input type="text" name="codigo" id="codigo" value="<?php echo $aRespuestas['codigo']; ?>" readonly/>
+                <!-- Campo Bloqueado (Fecha y Hora) -->
+                <label for="fechaRegistro">Fecha y Hora de registro:</label>
+                <input type="text" name="fechaRegistro" id="fechaRegistro" value="<?php echo date('d/m/Y H:i:s'); ?>" readonly/>
+                <span class='error'></span>
 
                 <!-- Campo Nombre -->
                 <label for="nombre">Nombre:</label>
                 <input type="text" name="nombre" id="nombre" value="<?php echo !empty($_REQUEST["nombre"]) && empty($aErrores["nombre"]) ? $_REQUEST["nombre"] : ''; ?>"/>
-                <?php echo !empty($aErrores["nombre"]) ? "<span class='error'>" . $aErrores['nombre'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['nombre']; ?></span>
 
                 <!-- Campo Sueldo -->
                 <label for="sueldo">Sueldo:</label>
                 <input type="text" name="sueldo" id="sueldo" title="Usar comas para separar decimales" value="<?php echo !empty($_REQUEST["sueldo"]) && empty($aErrores["sueldo"]) ? $_REQUEST["sueldo"] : ''; ?>"/>
-                <?php echo !empty($aErrores["sueldo"]) ? "<span class='error'>" . $aErrores['sueldo'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['sueldo']; ?></span>
 
                 <!-- Campo Fecha de Nacimiento -->
                 <label for="fechaNacimiento">Fecha de Nacimiento:</label>
                 <input type="date" name="fechaNacimiento" id="fechaNacimiento" value="<?php echo !empty($_REQUEST["fechaNacimiento"]) && empty($aErrores["fechaNacimiento"]) ? $_REQUEST["fechaNacimiento"] : ''; ?>"/>
-                <?php echo !empty($aErrores["fechaNacimiento"]) ? "<span class='error'>" . $aErrores['fechaNacimiento'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['fechaNacimiento']; ?></span>
 
                 <!-- Campo Telefono -->
                 <label for="telefono">Telefono:</label>
                 <input type="text" name="telefono" id="telefono" value="<?php echo !empty($_REQUEST["telefono"]) && empty($aErrores["telefono"]) ? $_REQUEST["telefono"] : ''; ?>"/>
-                <?php echo !empty($aErrores["telefono"]) ? "<span class='error'>" . $aErrores['telefono'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['telefono']; ?></span>
                 
-                <!-- Campo Radio nuttons Genero -->
+                <!-- Campo Radio buttons Genero -->
                 <label>Género:</label>
                 <div class="grupo-opciones">
                     <input type="radio" name="genero" id="generoM" value="M" <?php echo (isset($_REQUEST['genero']) && $_REQUEST['genero'] == 'M') ? 'checked' : ''; ?>/>
@@ -268,7 +269,7 @@
                     <input type="radio" name="genero" id="generoO" value="O" <?php echo (isset($_REQUEST['genero']) && $_REQUEST['genero'] == 'O') ? 'checked' : ''; ?>/>
                     <label for="generoO" class="label-inline">Otro</label>
                 </div>
-                <?php echo !empty($aErrores["genero"]) ? "<span class='error'>" . $aErrores['genero'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['genero']; ?></span>
 
                 <!-- Campo Desplegable / Select (Estado Civil) -->
                 <label for="estadoCivil">Estado Civil:</label>
@@ -279,14 +280,14 @@
                     <option value="Divorciado/a" <?php echo (isset($_REQUEST['estadoCivil']) && $_REQUEST['estadoCivil'] == 'Divorciado/a') ? 'selected' : ''; ?>>Divorciado/a</option>
                     <option value="Viudo/a" <?php echo (isset($_REQUEST['estadoCivil']) && $_REQUEST['estadoCivil'] == 'Viudo/a') ? 'selected' : ''; ?>>Viudo/a</option>
                 </select>
-                <?php echo !empty($aErrores["estadoCivil"]) ? "<span class='error'>" . $aErrores['estadoCivil'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['estadoCivil']; ?></span>
 
                 <!-- Campo Casilla de Verificacion / Checkbox (Aceptar Terminos) -->
                 <div class="grupo-opciones" style="margin-top: 15px;">
                     <input type="checkbox" name="aceptaTerminos" id="aceptaTerminos" value="SI" <?php echo isset($_REQUEST['aceptaTerminos']) ? 'checked' : ''; ?>/>
                     <label for="aceptaTerminos" class="label-inline">Acepto los términos y condiciones</label>
                 </div>
-                <?php echo !empty($aErrores["aceptaTerminos"]) ? "<span class='error'>" . $aErrores['aceptaTerminos'] . "</span>" : ''; ?>
+                <span class='error'><?php echo $aErrores['aceptaTerminos']; ?></span>
 
                 <p><input type="submit" name="enviar" value="Enviar"/></p>
             </form>
