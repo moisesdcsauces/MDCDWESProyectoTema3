@@ -121,7 +121,7 @@
                     // RECORRIDO DE TODAS LAS SUPERGLOBALES CON FOREACH
                     echo "<h2>2. Recorrido de todas las Superglobales con foreach()</h2>";
 
-                    // Array maestro con todas las variables superglobales de PHP
+                    // Array con todas las variables superglobales de PHP
                     $aSuperglobales = [
                         '$_SERVER'  => $_SERVER,
                         '$_REQUEST' => $_REQUEST,
