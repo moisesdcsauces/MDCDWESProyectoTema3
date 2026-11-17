@@ -4,33 +4,113 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tratamiento</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@400;500;600;700;800&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../../webroot/css/styles.css">
+        <link rel="stylesheet" href="../webroot/css/estilos.css">
+
+        <style>
+            .enlace-volver {
+                color: #474a8a;
+                font-weight: bold;
+                text-decoration: none;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+
+            .container {
+                display: block;
+                margin: 0 auto;
+                background: white;
+                padding: 30px;
+                border-radius: 8px;
+                max-width: 900px;
+                width: 100%;
+                text-align: left;
+            }
+
+            .container h2 {
+                color: #777bb4;
+                margin-top: 30px;
+                margin-bottom: 15px;
+                border-bottom: 2px solid #e9ecef;
+                padding-bottom: 10px;
+            }
+
+            .container h3 {
+                color: #474a8a;
+                margin-top: 25px;
+            }
+        </style>
     </head>
-    <body>
-        <?php
-        /*
-         * Moisés Alberto Dominguez Cruz
-         * 08/10/2026
-         * 21. Construir un formulario para recoger un cuestionario realizado a una persona y enviarlo a una página Tratamiento.php para que muestre
-         * las preguntas y las respuestas recogidas.
-         */
-        echo "<a href='ejercicio21.php'>⬅ Volver al formulario</a><br>";
+    <body class="pagina-ajustada">
+        <header id="site-header" class="cabecera">
+            <div class="cabecera__contenedor">
+                <img class="monograma" src="../../webroot/images/cruz.png" alt="">
+                <h1 class="titulo-header">TEMA 3: Características del Lenguaje PHP</h1>
+                <img class="monograma" src="../../webroot/images/cruz.png" alt="">
+            </div>
+        </header>
 
-        $oFechaNacimientoDateTime = new DateTime($_REQUEST["fechaNacimiento"]);
-        
-        // Recoge los valores de los campos por el metodo post del formulario
-        $sNombre = $_REQUEST['nombre'];
-        $iSueldo = $_REQUEST['sueldo'];
+        <main>
+            <section>
+                <div class="container">
+                    <a href='ejercicio21.php' class='enlace-volver'>⬅ Volver al formulario</a>
+                    <hr>
 
-        printf("Nombre: " . $sNombre . "\n"); //Muestra por pantalla el texto seguido del valor y un salto de linea
+                    <?php
+                    /*
+                     * Moisés Alberto Dominguez Cruz
+                     * 08/10/2026
+                     * 21. Construir un formulario para recoger un cuestionario realizado a una persona y enviarlo a una página Tratamiento.php para que muestre
+                     * las preguntas y las respuestas recogidas.
+                     */
 
-        echo "<br>";
+                    // Si se entra a Tratamiento.php sin pasar por el formulario no hay datos que mostrar
+                    if (!isset($_REQUEST['submit'])) {
+                        echo "<p>No se han recibido datos. Rellena primero el formulario.</p>";
+                    } else {
+                        // Recoge los valores de los campos por el metodo post del formulario
+                        $sNombre = $_REQUEST['nombre'];
+                        $iSueldo = $_REQUEST['sueldo'];
 
-        printf("Fecha nacimiento: " . $oFechaNacimientoDateTime->format("d/m/Y") . "\n"); //Muestra por pantalla el texto seguido del valor y un salto de linea
+                        // Si la fecha va vacia, new DateTime('') daria la fecha de hoy, por eso se comprueba antes
+                        if (!empty($_REQUEST["fechaNacimiento"])) {
+                            $oFechaNacimientoDateTime = new DateTime($_REQUEST["fechaNacimiento"]);
+                            $sFechaNacimiento = $oFechaNacimientoDateTime->format("d/m/Y");
+                        } else {
+                            $sFechaNacimiento = "No indicada";
+                        }
 
-        echo "<br>";
+                        // El valor va como parametro %s y no concatenado en el formato:
+                        // si el usuario escribe un % en el nombre, printf lo tomaria como formato y daria error
+                        printf("Nombre: %s<br>", $sNombre);
 
-        printf("Sueldo: " . $iSueldo . "\n"); //Muestra por pantalla el texto seguido del valor
-        ?>
+                        printf("Fecha nacimiento: %s<br>", $sFechaNacimiento);
+
+                        printf("Sueldo: %s", $iSueldo);
+                    }
+                    ?>
+                </div>
+            </section>
+        </main>
+
+        <footer class="pie">
+            <div class="pie__redes">
+                <a class="pie__red" href="../indexProyectoTema3.php" title="Ir al índice del Tema 3" aria-label="Ir al índice del Tema 3">
+                    <img src="../../webroot/images/icons/casa.png" alt="">
+                </a>
+                <a class="pie__red" href="https://github.com/moisesdcsauces/MDCDWESProyectoTema3" target="_blank" rel="noopener" aria-label="GitHub">
+                    <img src="../../webroot/images/icons/github.png" alt="">
+                </a>
+                <a class="pie__red" href="https://www.linkedin.com/in/mois%C3%A9s-alberto-dom%C3%ADnguez-cruz/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <img src="../../webroot/images/icons/linkedin.png" alt="">
+                </a>
+            </div>
+            <p class="pie__texto">© <a class="titulo-enlace" href="../../index.html"> Moisés Alberto Domínguez Cruz</a> - IES Los Sauces<span id="year"></span></p>
+        </footer>
+
+        <script src="../../webroot/js/main.js" defer></script>
     </body>
 </html>
-
