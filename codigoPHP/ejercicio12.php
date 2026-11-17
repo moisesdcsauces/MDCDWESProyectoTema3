@@ -45,8 +45,9 @@
 
             /* Estilo para print_r */
             pre {
-                background-color: #2d2d2d;
-                color: #a6e22e;
+                background-color: #f4f4fb;
+                color: #000000;
+                border-left: 3px solid #777bb4;
                 padding: 15px;
                 border-radius: 5px;
                 overflow-x: auto;
@@ -108,10 +109,6 @@
                     <hr>
 
                     <?php
-                    // Iniciamos sesion para asegurar que la variable $_SESSION este disponible
-                    session_start();
-                    $_SESSION['usuario_prueba'] = 'Moises_Alberto'; // Dato de prueba
-                    
                     // MOSTRAR _SERVER CON PRINT_R
                     echo "<h2>1. Variable superglobal \$_SERVER formateada con print_r()</h2>";
                     echo "<pre>";
@@ -123,14 +120,14 @@
 
                     // Array con todas las variables superglobales de PHP
                     $aSuperglobales = [
-                        '$_SERVER'  => $_SERVER,
+                        '$_SERVER' => $_SERVER,
                         '$_REQUEST' => $_REQUEST,
-                        '$_GET'     => $_GET,
-                        '$_POST'    => $_POST,
-                        '$_FILES'   => $_FILES,
-                        '$_COOKIE'  => $_COOKIE,
+                        '$_GET' => $_GET,
+                        '$_POST' => $_POST,
+                        '$_FILES' => $_FILES,
+                        '$_COOKIE' => $_COOKIE,
                         '$_SESSION' => isset($_SESSION) ? $_SESSION : [],
-                        '$_ENV'     => $_ENV
+                        '$_ENV' => $_ENV
                     ];
 
                     // Recorremos el array
@@ -141,7 +138,7 @@
                         if (!empty($arraySuperglobal)) {
                             echo "<table>";
                             echo "<tr><th>Nombre</th><th>Contenido</th></tr>";
-                            
+
                             // Recorremos el contenido real de la superglobal
                             foreach ($arraySuperglobal as $clave => $valor) {
                                 // Si el valor es un array, se convierte a texto para que no de error
@@ -178,7 +175,7 @@
             </div>
             <p class="pie__texto">© <a class="titulo-enlace" href="../../index.html"> Moisés Alberto Domínguez Cruz</a> - IES Los Sauces<span id="year"></span></p>
         </footer>
-        
+
         <script src="../../webroot/js/main.js" defer></script>
     </body>
 </html>
