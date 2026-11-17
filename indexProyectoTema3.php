@@ -15,7 +15,7 @@
   <header id="site-header" class="cabecera">
     <div class="cabecera__contenedor">
       <img class="monograma" src="../webroot/images/cruz.png" alt="">
-      <h1 class="titulo-header">TEMA 3: Caracteristicas del lenguaje PHP</h1>
+      <h1 class="titulo-header">TEMA 3: Características del Lenguaje PHP</h1>
       <!-- <img class="cabecera__banner" src="../webroot/images/titulo-pagina.png" alt="Moisés Alberto Domínguez Cruz"> -->
       <img class="monograma" src="../webroot/images/cruz.png" alt="">
     </div>
